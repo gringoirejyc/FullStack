@@ -7,6 +7,7 @@
 -- these lines here.
 
 --create datebase
+DROP DATABASE IF EXISTS tournament;
 create database tournament;
 \c tournament
 
@@ -21,8 +22,8 @@ create table player (
 --create table matches include the match id,the winner id and the looser id
 create table matches(
     id_match serial,
-    id_winner integer null references player(id),
-    id_looser integer null references player(id),
+    id_winner integer references player(id) on delete cascade,
+    id_looser integer references player(id) on delete cascade,
     primary key(id_match)
 );
 
