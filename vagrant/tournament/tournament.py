@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# 
+#
 # tournament.py -- implementation of a Swiss-system tournament
 #
 
@@ -8,10 +8,11 @@ import psycopg2
 
 
 class DB:
-    def __init__(self,db_con_str="dbname=tournament"):
+    def __init__(self, db_con_str="dbname=tournament"):
         """
         Creates a database connection with the connection string provided
-        :param str db_con_str: Contains the database connection string, with a default value when no argument is passed to the parameter
+        :param str db_con_str: Contains the database connection string,
+        with a default value when no argument is passed to the parameter
         """
         self.conn = psycopg2.connect(db_con_str)
 
@@ -19,13 +20,14 @@ class DB:
         """
         Returns the current cursor of the database
         """
-        return self.conn.cursor();
+        return self.conn.cursor()
 
     def execute(self, sql_query_string, and_close=False):
         """
         Executes SQL queries
         :param str sql_query_string: Contain the query string to be executed
-        :param bool and_close: If true, closes the database connection after executing and commiting the SQL Query
+        :param bool and_close: If true, closes the database connection
+        after executing and commiting the SQL Query
         """
         cursor = self.cursor()
         cursor.execute(sql_query_string)
@@ -39,44 +41,30 @@ class DB:
         Closes the current database connection
         """
         return self.conn.close()
-    
+
+
 def deleteMatches():
-    DB().execute("DELETE FROM matches",True)
-        
-    """Remove all the match records from the database."""
-    """DB = psycopg2.connect("dbname = tournament")
-    c = DB.cursor()"""
- 
- 
- 
-    """DB.commit()
-    DB.close()"""
+    DB().execute("DELETE FROM matches", True)
 
 
 def deletePlayers():
     """Remove all the player records from the database.
     DB = psycopg2.connect("dbname = tournament")
     c = DB.cursor()"""
-    DB().execute("DELETE FROM player",True)
+    DB().execute("DELETE FROM player", True)
     """DB.commit()
     DB.close()"""
 
 
 def countPlayers():
-        
-    """Returns the number of players currently registered.
-    
-    DB = psycopg2.connect("dbname = tournament")
-    c = DB.cursor()"""
-    conn=DB().execute("SELECT COUNT(*) FROM player")
+    """Returns the number of players currently registered."""
+    conn = DB().execute("SELECT COUNT(*) FROM player")
     cursor = conn["cursor"].fetchall()
     conn['conn'].close()
     return cursor[0][0]
-    
 
 
 def registerPlayer(name):
-        
     """Adds a player to the tournament database.
     The database assigns a unique serial id number for the player.  (This
     should be handled by your SQL database schema, not in your Python code.)
@@ -91,7 +79,6 @@ def registerPlayer(name):
 
 
 def playerStandings():
-        
     """Returns a list of the players and their win records, sorted by wins.
        The first entry in the list should be the player in first place,
        or a player
@@ -115,7 +102,6 @@ def playerStandings():
 
 
 def reportMatch(winner, loser):
-        
     """Records the outcome of a single match between two players.
 
     Args:
@@ -132,7 +118,6 @@ def reportMatch(winner, loser):
 
 
 def swissPairings():
-        
     """Returns a list of pairs of players for the next round of a match.
     Assuming that there are an even number of players registered, each player
     appears exactly once in the pairings.  Each player is paired with another
