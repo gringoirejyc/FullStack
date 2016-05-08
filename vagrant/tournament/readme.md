@@ -9,9 +9,13 @@ This project require [Vagrant](https://www.vagrantup.com/) & [Virtual Box](https
 
 ###Install
 1. Fork this respository to your local computer
-2. Using the terminal, change directory to fullstack/vagrant (cd fullstack/vagrant), then type vagrant up to launch your virtual machine.
-OS X Example:
-3. Once it is up and running, type vagrant ssh to log into it. This will log your terminal in to the virtual machine, and you'll get a Linux shell prompt. When you want to log out, type exit at the shell prompt.  To turn the virtual machine off (without deleting anything), type vagrant halt. If you do this, you'll need to run vagrant up again before you can log into it.
+2. Using the terminal, change directory to fullstack/vagrant (cd fullstack/vagrant), then type vagrant up to launch your virtual machine. In your terminal ,type `cd Users/YourPcName/Deskstop/FullStack/vagrant/tournament` & `vagrant up`
+
+3. Once it is up and running, type vagrant ssh to log into it. This will log your terminal in to the virtual machine, and you'll get a Linux shell prompt. When you want to log out, type exit at the shell prompt.  To turn the virtual machine off (without deleting anything), type vagrant halt. If you do this, you'll need to run vagrant up again before you can log into it. Type `vagrant ssh` to **log in**. If you want to **turn off** the vagrant ,type `vagrant halt`
+4. Make sure your directory is the project folder, then to import the databse & table, in your terminal type `psql -f tournament.sql`
+5. To test the code, in your terminal type `python tournament_test.py`
+6. To see the data in the database, type `psql`, then type some SQL queries.
+
 
 Files installed for this project are located in the /vagrant directory inside the virtual machine. Everything here is automatically shared with the vagrant directory inside the fullstack directory on your computer. Any code files you save into that directory from your favorite text editor will be automatically available in the VM.
 
