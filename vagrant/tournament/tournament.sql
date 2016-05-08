@@ -14,7 +14,7 @@ create database tournament;
 --create table player include the player id as an unique and player fullname
 create table player (
     id serial primary key,
-    name text,
+    name text
 );
 
 --create table matches include the match id,the winner id and the looser id
