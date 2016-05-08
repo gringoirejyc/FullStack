@@ -13,10 +13,8 @@ create database tournament;
 
 --create table player include the player id as an unique and player fullname
 create table player (
-    id serial,
+    id serial primary key,
     name text,
-    
-    primary key(id)
 );
 
 --create table matches include the match id,the winner id and the looser id
@@ -56,5 +54,4 @@ create view standings as
       select countMatches.ID as ID,countMatches.Name as Name,coalesce(countWins.Record,'0'),countMatches.Played
       from countMatches left join countWins 
       on countWins.ID = countMatches.ID 
-      order by coalesce(countWins.Record) ASC
-      ;
+      order by coalesce(countWins.Record) ASC;

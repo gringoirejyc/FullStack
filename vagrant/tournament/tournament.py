@@ -48,12 +48,8 @@ def deleteMatches():
 
 
 def deletePlayers():
-    """Remove all the player records from the database.
-    DB = psycopg2.connect("dbname = tournament")
-    c = DB.cursor()"""
+    """Remove all the player records from the database."""
     DB().execute("DELETE FROM player", True)
-    """DB.commit()
-    DB.close()"""
 
 
 def countPlayers():
